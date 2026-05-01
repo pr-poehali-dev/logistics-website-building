@@ -31,7 +31,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white" style={{ fontFamily: "'Golos Text', sans-serif", color: "#1a1a2e" }}>
+    <div className="min-h-screen" style={{ fontFamily: "'Golos Text', sans-serif", color: "#1a1a2e", backgroundImage: "url('https://cdn.poehali.dev/projects/89a0b4bd-4d22-4025-802f-4ba001300c9c/bucket/6166b753-8628-4b70-b5f4-ad014ba55630.png')", backgroundSize: "cover", backgroundPosition: "center top", backgroundAttachment: "fixed", backgroundColor: "#f8f9fb" }}>
       <Header
         activeSection={activeSection}
         mobileMenuOpen={mobileMenuOpen}
