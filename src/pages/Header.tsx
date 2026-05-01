@@ -23,17 +23,12 @@ const Header = ({ activeSection, mobileMenuOpen, isLoggedIn, onNav, onToggleMobi
     <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-[68px]">
 
       {/* Логотип */}
-      <button onClick={() => onNav("home")} className="flex items-center gap-3">
-        <div className="relative flex-shrink-0">
-          <div style={{ width: 46, height: 46, border: "2.5px solid #e85d04", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Icon name="Truck" size={20} className="text-[#0d2240]" />
-          </div>
-          <div style={{ position: "absolute", top: -2, right: -2, width: 13, height: 13, background: "#e85d04", borderRadius: "50%", border: "2px solid #fff" }} />
-        </div>
-        <div>
-          <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: 20, fontWeight: 700, color: "#0d2240", lineHeight: 1 }}>RailWay</div>
-          <div style={{ fontSize: 9, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.12em", lineHeight: 1.2 }}>Транспортная компания</div>
-        </div>
+      <button onClick={() => onNav("home")} className="flex items-center">
+        <img
+          src="https://cdn.poehali.dev/projects/89a0b4bd-4d22-4025-802f-4ba001300c9c/bucket/36818032-1268-4847-9d2c-d69b1f55ff99.jpg"
+          alt="RailWay"
+          style={{ height: 52, width: "auto", objectFit: "contain" }}
+        />
       </button>
 
       {/* Навигация */}
