@@ -19,7 +19,7 @@ interface HeaderProps {
 }
 
 const Header = ({ activeSection, mobileMenuOpen, isLoggedIn, onNav, onToggleMobile }: HeaderProps) => (
-  <header style={{ background: "#fff", borderBottom: "1px solid #e5e7eb" }} className="sticky top-0 z-50">
+  <header style={{ background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(229,231,235,0.6)" }} className="sticky top-0 z-50">
     <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-[68px]">
 
       {/* Логотип */}
@@ -65,7 +65,7 @@ const Header = ({ activeSection, mobileMenuOpen, isLoggedIn, onNav, onToggleMobi
     </div>
 
     {mobileMenuOpen && (
-      <div style={{ background: "#fff", borderTop: "1px solid #f3f4f6", padding: "12px 20px" }} className="lg:hidden flex flex-col gap-2">
+      <div style={{ background: "rgba(255,255,255,0.92)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(243,244,246,0.7)", padding: "12px 20px" }} className="lg:hidden flex flex-col gap-2">
         {NAV_LABELS.map((label, i) => (
           <button key={label} onClick={() => onNav(NAV_SECTIONS[i])}
             style={{ textAlign: "left", padding: "10px 0", borderBottom: "1px solid #f3f4f6", fontSize: 14, color: "#374151" }}>

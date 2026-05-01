@@ -2,10 +2,13 @@ import Icon from "@/components/ui/icon";
 import { Section, TRUCK_IMAGE, STRESSED_IMAGE } from "./shared";
 import { WaIcon } from "./Header";
 
+const glass = "rgba(255,255,255,0.75)";
+const glassDark = "rgba(244,246,249,0.75)";
+
 const SectionHome = ({ onNav }: { onNav: (s: Section) => void }) => (
   <>
     {/* HERO */}
-    <section style={{ background: "#fff", overflow: "hidden" }}>
+    <section style={{ background: "rgba(255,255,255,0.6)", overflow: "hidden", backdropFilter: "blur(8px)" }}>
       <div className="max-w-7xl mx-auto px-5">
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 520, alignItems: "center" }} className="max-lg:block">
           <div style={{ paddingTop: 56, paddingBottom: 56, paddingRight: 40 }} className="animate-fade-in">
@@ -29,7 +32,7 @@ const SectionHome = ({ onNav }: { onNav: (s: Section) => void }) => (
                 </div>
               </button>
               <a href="https://wa.me/73432000000"
-                style={{ display: "flex", alignItems: "center", gap: 10, background: "#fff", color: "#1a1a2e", border: "1.5px solid #d1d5db", borderRadius: 8, padding: "14px 22px", textDecoration: "none", transition: "border-color .2s" }}
+                style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.85)", color: "#1a1a2e", border: "1.5px solid #d1d5db", borderRadius: 8, padding: "14px 22px", textDecoration: "none", transition: "border-color .2s" }}
                 onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = "#25d366"}
                 onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = "#d1d5db"}>
                 <WaIcon size={22} color="#25d366" />
@@ -63,7 +66,7 @@ const SectionHome = ({ onNav }: { onNav: (s: Section) => void }) => (
     </section>
 
     {/* ЗНАКОМО? */}
-    <section style={{ background: "#f4f6f9", padding: "64px 0" }}>
+    <section style={{ background: glassDark, padding: "64px 0", backdropFilter: "blur(6px)" }}>
       <div className="max-w-7xl mx-auto px-5" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
@@ -78,7 +81,7 @@ const SectionHome = ({ onNav }: { onNav: (s: Section) => void }) => (
               </div>
             ))}
           </div>
-          <div style={{ display: "flex", alignItems: "flex-start", gap: 12, background: "#fff", borderRadius: 12, padding: "16px 20px", borderLeft: "4px solid #e85d04", boxShadow: "0 1px 8px rgba(0,0,0,.06)" }}>
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 12, background: "rgba(255,255,255,0.85)", borderRadius: 12, padding: "16px 20px", borderLeft: "4px solid #e85d04", boxShadow: "0 1px 8px rgba(0,0,0,.06)" }}>
             <span style={{ color: "#e85d04", fontSize: 24, lineHeight: 1, marginTop: 2 }}>→</span>
             <p style={{ fontWeight: 700, fontSize: 16, color: "#0d2240", margin: 0, lineHeight: 1.4 }}>
               Мы исключаем эти риски<br />за счёт системной работы<br />и контроля
@@ -93,7 +96,7 @@ const SectionHome = ({ onNav }: { onNav: (s: Section) => void }) => (
     </section>
 
     {/* ЦИФРЫ */}
-    <section style={{ background: "#fff", padding: "56px 0", borderBottom: "1px solid #f3f4f6" }}>
+    <section style={{ background: "rgba(255,255,255,0.65)", padding: "56px 0", borderBottom: "1px solid rgba(229,231,235,0.6)", backdropFilter: "blur(6px)" }}>
       <div className="max-w-7xl mx-auto px-5">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 32, textAlign: "center" }} className="max-md:grid-cols-2">
           {[["12+", "лет на рынке"], ["50+", "направлений"], ["98%", "грузов в срок"], ["3 000+", "клиентов в год"]].map(([n, l]) => (
@@ -107,7 +110,7 @@ const SectionHome = ({ onNav }: { onNav: (s: Section) => void }) => (
     </section>
 
     {/* УСЛУГИ */}
-    <section style={{ background: "#fff", padding: "64px 0" }}>
+    <section style={{ background: "rgba(255,255,255,0.6)", padding: "64px 0", backdropFilter: "blur(6px)" }}>
       <div className="max-w-7xl mx-auto px-5">
         <h2 style={{ fontFamily: "'Oswald', sans-serif", fontSize: 38, fontWeight: 700, color: "#0d2240", textAlign: "center", marginBottom: 40 }}>Наши услуги</h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }} className="max-lg:grid-cols-2 max-md:grid-cols-1">
@@ -117,7 +120,7 @@ const SectionHome = ({ onNav }: { onNav: (s: Section) => void }) => (
             { icon: "Zap", title: "Срочная доставка", desc: "Экспресс «день в день» или «следующий день» для критичных грузов.", tag: "Срочно" },
           ].map((s) => (
             <div key={s.title}
-              style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 16, padding: 24, position: "relative", transition: "box-shadow .2s, transform .2s" }}
+              style={{ background: glass, border: "1px solid rgba(229,231,235,0.7)", borderRadius: 16, padding: 24, position: "relative", transition: "box-shadow .2s, transform .2s", backdropFilter: "blur(4px)" }}
               onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 28px rgba(0,0,0,.1)"; (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)"; }}
               onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.boxShadow = ""; (e.currentTarget as HTMLDivElement).style.transform = ""; }}>
               {s.tag && <span style={{ position: "absolute", top: 14, right: 14, background: "#e85d04", color: "#fff", fontSize: 11, padding: "3px 10px", borderRadius: 20, fontWeight: 600 }}>{s.tag}</span>}
@@ -126,8 +129,7 @@ const SectionHome = ({ onNav }: { onNav: (s: Section) => void }) => (
               </div>
               <h3 style={{ fontFamily: "'Oswald', sans-serif", fontSize: 20, fontWeight: 600, color: "#0d2240", marginBottom: 8 }}>{s.title}</h3>
               <p style={{ fontSize: 13, color: "#6b7280", marginBottom: 16, lineHeight: 1.5 }}>{s.desc}</p>
-              <button onClick={() => onNav("contacts")}
-                style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 13, fontWeight: 600, color: "#e85d04", background: "none", border: "none", cursor: "pointer", padding: 0 }}>
+              <button onClick={() => onNav("contacts")} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 13, fontWeight: 600, color: "#e85d04", background: "none", border: "none", cursor: "pointer", padding: 0 }}>
                 Узнать подробнее <Icon name="ArrowRight" size={14} />
               </button>
             </div>

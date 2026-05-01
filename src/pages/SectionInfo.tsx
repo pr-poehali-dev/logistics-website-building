@@ -2,6 +2,10 @@ import Icon from "@/components/ui/icon";
 import { Section, WAREHOUSE_IMAGE } from "./shared";
 import { WaIcon } from "./Header";
 
+const glass = "rgba(255,255,255,0.75)";
+const glassDark = "rgba(244,246,249,0.75)";
+const blur = "blur(8px)";
+
 /* ══════════════ ABOUT ══════════════ */
 export const SectionAbout = () => (
   <div style={{ maxWidth: 1280, margin: "0 auto", padding: "64px 20px" }}>
@@ -18,7 +22,7 @@ export const SectionAbout = () => (
           { icon: "Users", title: "Наша команда", text: "Более 200 сотрудников: диспетчеры, логисты, водители и менеджеры. Каждый знает своё дело." },
           { icon: "Award", title: "Достижения", text: "Лауреат премии «Лучшая ТК Урала» 2023. Партнёр крупнейших промышленных предприятий региона." },
         ].map((item) => (
-          <div key={item.title} style={{ display: "flex", gap: 16 }}>
+          <div key={item.title} style={{ display: "flex", gap: 16, background: glass, borderRadius: 14, padding: 16, backdropFilter: blur }}>
             <div style={{ width: 48, height: 48, background: "#0d2240", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
               <Icon name={item.icon} size={22} className="text-[#e85d04]" />
             </div>
@@ -32,7 +36,7 @@ export const SectionAbout = () => (
     </div>
     <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }} className="max-md:grid-cols-2">
       {[["12+", "лет на рынке"], ["50+", "городов"], ["120+", "единиц транспорта"], ["3 000+", "клиентов в год"]].map(([n, l]) => (
-        <div key={l} style={{ background: "#f4f6f9", borderRadius: 14, padding: 24, textAlign: "center" }}>
+        <div key={l} style={{ background: glassDark, borderRadius: 14, padding: 24, textAlign: "center", backdropFilter: blur }}>
           <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: 38, fontWeight: 700, color: "#e85d04" }}>{n}</div>
           <div style={{ fontSize: 13, color: "#0d2240", fontWeight: 500, marginTop: 4 }}>{l}</div>
         </div>
@@ -59,7 +63,7 @@ export const SectionServices = ({ onNav }: { onNav: (s: Section) => void }) => (
         { icon: "Zap", title: "Срочная доставка", desc: "Экспресс «день в день» для критически важных грузов.", tag: "Срочно" },
       ].map((s) => (
         <div key={s.title}
-          style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 16, padding: 24, position: "relative", transition: "box-shadow .2s" }}
+          style={{ background: glass, border: "1px solid rgba(229,231,235,0.7)", borderRadius: 16, padding: 24, position: "relative", transition: "box-shadow .2s", backdropFilter: blur }}
           onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 24px rgba(0,0,0,.1)"}
           onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.boxShadow = ""}>
           {s.tag && <span style={{ position: "absolute", top: 14, right: 14, background: "#e85d04", color: "#fff", fontSize: 11, padding: "3px 10px", borderRadius: 20, fontWeight: 600 }}>{s.tag}</span>}
@@ -91,7 +95,7 @@ export const SectionTariffs = ({ onNav }: { onNav: (s: Section) => void }) => (
         { name: "Бизнес", price: "от 8 000 ₽", desc: "Для регулярных отправок", features: ["Груз до 2 000 кг", "Срок: 2–3 дня", "Страховка включена", "Персональный менеджер", "Отсрочка 14 дней"], highlight: true },
         { name: "Экспресс", price: "от 15 000 ₽", desc: "Приоритетная срочная доставка", features: ["Груз любого веса", "Срок: 1–2 дня", "Расширенная страховка", "Персональный менеджер", "Выделенный транспорт"], highlight: false },
       ].map((p) => (
-        <div key={p.name} style={{ borderRadius: 20, padding: 32, position: "relative", background: p.highlight ? "#0d2240" : "#fff", border: p.highlight ? "none" : "1px solid #e5e7eb" }}>
+        <div key={p.name} style={{ borderRadius: 20, padding: 32, position: "relative", background: p.highlight ? "#0d2240" : glass, border: p.highlight ? "none" : "1px solid rgba(229,231,235,0.7)", backdropFilter: p.highlight ? "none" : blur }}>
           {p.highlight && <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", background: "#e85d04", color: "#fff", fontSize: 11, padding: "4px 16px", borderRadius: 20, fontWeight: 700, whiteSpace: "nowrap" }}>Популярный</div>}
           <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: 22, fontWeight: 700, color: p.highlight ? "#fff" : "#0d2240", marginBottom: 4 }}>{p.name}</div>
           <div style={{ fontSize: 30, fontWeight: 700, color: "#e85d04", marginBottom: 8 }}>{p.price}</div>
@@ -113,7 +117,7 @@ export const SectionTariffs = ({ onNav }: { onNav: (s: Section) => void }) => (
         </div>
       ))}
     </div>
-    <div style={{ background: "#f4f6f9", borderRadius: 16, padding: "24px 32px", textAlign: "center" }}>
+    <div style={{ background: glassDark, borderRadius: 16, padding: "24px 32px", textAlign: "center", backdropFilter: blur }}>
       <p style={{ color: "#6b7280", marginBottom: 16 }}>Нужен индивидуальный тариф для регулярных перевозок?</p>
       <button onClick={() => onNav("contacts")}
         style={{ background: "#0d2240", color: "#fff", border: "none", borderRadius: 10, padding: "12px 32px", fontWeight: 700, fontSize: 14, cursor: "pointer" }}>
@@ -140,10 +144,10 @@ export const SectionBlog = () => (
         { icon: "Headphones", title: "Персональный менеджер", desc: "Один менеджер от заявки до доставки. Всегда на связи в рабочее время." },
       ].map((item) => (
         <div key={item.title}
-          style={{ background: "#f4f6f9", borderRadius: 16, padding: 24, transition: "box-shadow .2s" }}
+          style={{ background: glassDark, borderRadius: 16, padding: 24, transition: "box-shadow .2s", backdropFilter: blur }}
           onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.boxShadow = "0 6px 20px rgba(0,0,0,.08)"}
           onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.boxShadow = ""}>
-          <div style={{ width: 48, height: 48, background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+          <div style={{ width: 48, height: 48, background: glass, border: "1px solid rgba(229,231,235,0.8)", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
             <Icon name={item.icon} size={22} className="text-[#e85d04]" />
           </div>
           <h3 style={{ fontFamily: "'Oswald', sans-serif", fontSize: 19, fontWeight: 600, color: "#0d2240", marginBottom: 8 }}>{item.title}</h3>
@@ -170,7 +174,7 @@ export const SectionContacts = () => (
           { icon: "MapPin", label: "Адрес", value: "Екатеринбург, ул. Транспортная, 15" },
           { icon: "Clock", label: "Режим работы", value: "Пн–Пт: 08:00–19:00, Сб: 09:00–15:00" },
         ].map((c) => (
-          <div key={c.label} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+          <div key={c.label} style={{ display: "flex", gap: 16, alignItems: "flex-start", background: glass, borderRadius: 14, padding: 16, backdropFilter: blur }}>
             <div style={{ width: 48, height: 48, background: "#0d2240", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
               <Icon name={c.icon} size={20} className="text-[#e85d04]" />
             </div>
@@ -185,17 +189,17 @@ export const SectionContacts = () => (
           <WaIcon size={18} color="#fff" /> Написать в WhatsApp
         </a>
       </div>
-      <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 20, padding: 32, boxShadow: "0 2px 16px rgba(0,0,0,.06)" }}>
+      <div style={{ background: glass, border: "1px solid rgba(229,231,235,0.7)", borderRadius: 20, padding: 32, boxShadow: "0 2px 16px rgba(0,0,0,.06)", backdropFilter: blur }}>
         <h3 style={{ fontFamily: "'Oswald', sans-serif", fontSize: 24, fontWeight: 700, color: "#0d2240", marginBottom: 24 }}>Оставить заявку</h3>
         <form onSubmit={e => e.preventDefault()} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           {[["Ваше имя", "text"], ["Компания", "text"], ["Телефон", "tel"]].map(([ph, type]) => (
             <input key={ph} type={type} placeholder={ph}
-              style={{ border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 16px", fontSize: 13, outline: "none" }}
+              style={{ border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 16px", fontSize: 13, outline: "none", background: "rgba(255,255,255,0.8)" }}
               onFocus={e => (e.target as HTMLInputElement).style.borderColor = "#0d2240"}
               onBlur={e => (e.target as HTMLInputElement).style.borderColor = "#d1d5db"} />
           ))}
           <textarea placeholder="Опишите груз и направление" rows={4}
-            style={{ border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 16px", fontSize: 13, outline: "none", resize: "none" }}
+            style={{ border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 16px", fontSize: 13, outline: "none", resize: "none", background: "rgba(255,255,255,0.8)" }}
             onFocus={e => (e.target as HTMLTextAreaElement).style.borderColor = "#0d2240"}
             onBlur={e => (e.target as HTMLTextAreaElement).style.borderColor = "#d1d5db"} />
           <button type="submit"

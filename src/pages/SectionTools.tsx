@@ -1,6 +1,9 @@
 import Icon from "@/components/ui/icon";
-import { Section, MOCK_ORDERS, MOCK_INVOICES } from "./shared";
+import { MOCK_ORDERS, MOCK_INVOICES } from "./shared";
 import { SectionsProps } from "./Sections";
+
+const glass = "rgba(255,255,255,0.75)";
+const blur = "blur(8px)";
 
 /* ══════════════ TRACKING ══════════════ */
 export const SectionTracking = ({ trackingNumber, setTrackingNumber, trackingResult, handleTrack }: Pick<SectionsProps, "trackingNumber" | "setTrackingNumber" | "trackingResult" | "handleTrack">) => (
@@ -10,10 +13,10 @@ export const SectionTracking = ({ trackingNumber, setTrackingNumber, trackingRes
       <h2 style={{ fontFamily: "'Oswald', sans-serif", fontSize: 44, fontWeight: 700, color: "#0d2240", marginBottom: 8 }}>Отслеживание</h2>
       <p style={{ color: "#9ca3af" }}>Введите номер заказа (начинается с GM)</p>
     </div>
-    <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 16, padding: 32, marginBottom: 20 }}>
+    <div style={{ background: glass, border: "1px solid rgba(229,231,235,0.7)", borderRadius: 16, padding: 32, marginBottom: 20, backdropFilter: blur }}>
       <div style={{ display: "flex", gap: 12 }}>
         <input value={trackingNumber} onChange={e => setTrackingNumber(e.target.value)} placeholder="GM-2024-0341"
-          style={{ flex: 1, border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 16px", fontSize: 14, outline: "none" }}
+          style={{ flex: 1, border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 16px", fontSize: 14, outline: "none", background: "rgba(255,255,255,0.8)" }}
           onFocus={e => (e.target as HTMLInputElement).style.borderColor = "#0d2240"}
           onBlur={e => (e.target as HTMLInputElement).style.borderColor = "#d1d5db"} />
         <button onClick={handleTrack}
@@ -23,7 +26,7 @@ export const SectionTracking = ({ trackingNumber, setTrackingNumber, trackingRes
       </div>
     </div>
     {trackingResult === "found" && (
-      <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 16, padding: 32 }} className="animate-fade-in">
+      <div style={{ background: glass, border: "1px solid rgba(229,231,235,0.7)", borderRadius: 16, padding: 32, backdropFilter: blur }} className="animate-fade-in">
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
           <div style={{ width: 40, height: 40, background: "#dcfce7", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Icon name="PackageCheck" size={20} className="text-green-600" />
@@ -51,7 +54,7 @@ export const SectionTracking = ({ trackingNumber, setTrackingNumber, trackingRes
       </div>
     )}
     {trackingResult === "notfound" && (
-      <div style={{ background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 16, padding: 32, textAlign: "center" }} className="animate-fade-in">
+      <div style={{ background: "rgba(254,242,242,0.85)", border: "1px solid #fecaca", borderRadius: 16, padding: 32, textAlign: "center", backdropFilter: blur }} className="animate-fade-in">
         <Icon name="PackageX" size={40} className="text-red-400 mx-auto mb-3" />
         <p style={{ color: "#b91c1c", fontWeight: 600, marginBottom: 4 }}>Заказ не найден</p>
         <p style={{ color: "#f87171", fontSize: 13 }}>Проверьте номер или обратитесь в поддержку</p>
@@ -68,14 +71,14 @@ export const SectionCalculator = ({ calcForm, setCalcForm, calcResult, handleCal
       <h2 style={{ fontFamily: "'Oswald', sans-serif", fontSize: 44, fontWeight: 700, color: "#0d2240", marginBottom: 8 }}>Калькулятор</h2>
       <p style={{ color: "#9ca3af" }}>Предварительная стоимость за 30 секунд</p>
     </div>
-    <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 20, padding: 32 }}>
+    <div style={{ background: glass, border: "1px solid rgba(229,231,235,0.7)", borderRadius: 20, padding: 32, backdropFilter: blur }}>
       <form onSubmit={handleCalc} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
           {[["Откуда", "from"], ["Куда", "to"]].map(([label, field]) => (
             <div key={field}>
               <label style={{ fontSize: 13, fontWeight: 600, color: "#0d2240", display: "block", marginBottom: 8 }}>{label}</label>
               <select value={calcForm[field as "from" | "to"]} onChange={e => setCalcForm({ ...calcForm, [field]: e.target.value })}
-                style={{ width: "100%", border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 14px", fontSize: 13, outline: "none" }} required>
+                style={{ width: "100%", border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 14px", fontSize: 13, outline: "none", background: "rgba(255,255,255,0.8)" }} required>
                 <option value="">Выберите город</option>
                 {["Екатеринбург", "Тюмень", "Челябинск", "Пермь", "Уфа", "Курган", "Салехард"].map(c => <option key={c}>{c}</option>)}
               </select>
@@ -87,7 +90,7 @@ export const SectionCalculator = ({ calcForm, setCalcForm, calcResult, handleCal
             <div key={field}>
               <label style={{ fontSize: 13, fontWeight: 600, color: "#0d2240", display: "block", marginBottom: 8 }}>{label}</label>
               <input type="number" placeholder={ph} value={calcForm[field as "weight" | "volume"]} onChange={e => setCalcForm({ ...calcForm, [field]: e.target.value })}
-                style={{ width: "100%", border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 14px", fontSize: 13, outline: "none" }} required />
+                style={{ width: "100%", border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 14px", fontSize: 13, outline: "none", background: "rgba(255,255,255,0.8)" }} required />
             </div>
           ))}
         </div>
@@ -123,17 +126,17 @@ export const SectionCabinet = ({ isLoggedIn, setIsLoggedIn, loginForm, setLoginF
           <h2 style={{ fontFamily: "'Oswald', sans-serif", fontSize: 36, fontWeight: 700, color: "#0d2240", marginBottom: 8 }}>Личный кабинет</h2>
           <p style={{ color: "#9ca3af" }}>Войдите, чтобы просматривать заказы и счета</p>
         </div>
-        <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 20, padding: 32 }}>
+        <div style={{ background: glass, border: "1px solid rgba(229,231,235,0.7)", borderRadius: 20, padding: 32, backdropFilter: blur }}>
           <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <div>
               <label style={{ fontSize: 13, fontWeight: 600, color: "#0d2240", display: "block", marginBottom: 8 }}>Email</label>
               <input type="email" value={loginForm.email} onChange={e => setLoginForm({ ...loginForm, email: e.target.value })} placeholder="your@company.ru"
-                style={{ width: "100%", border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 16px", fontSize: 13, outline: "none", boxSizing: "border-box" }} required />
+                style={{ width: "100%", border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 16px", fontSize: 13, outline: "none", boxSizing: "border-box", background: "rgba(255,255,255,0.8)" }} required />
             </div>
             <div>
               <label style={{ fontSize: 13, fontWeight: 600, color: "#0d2240", display: "block", marginBottom: 8 }}>Пароль</label>
               <input type="password" value={loginForm.password} onChange={e => setLoginForm({ ...loginForm, password: e.target.value })} placeholder="••••••••"
-                style={{ width: "100%", border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 16px", fontSize: 13, outline: "none", boxSizing: "border-box" }} required />
+                style={{ width: "100%", border: "1px solid #d1d5db", borderRadius: 12, padding: "12px 16px", fontSize: 13, outline: "none", boxSizing: "border-box", background: "rgba(255,255,255,0.8)" }} required />
             </div>
             <button type="submit"
               style={{ background: "#0d2240", color: "#fff", border: "none", borderRadius: 12, padding: "14px", fontWeight: 700, fontSize: 15, cursor: "pointer", marginTop: 4 }}>
@@ -141,7 +144,7 @@ export const SectionCabinet = ({ isLoggedIn, setIsLoggedIn, loginForm, setLoginF
             </button>
             <button type="button" style={{ background: "none", border: "none", color: "#e85d04", fontSize: 13, cursor: "pointer" }}>Забыли пароль?</button>
           </form>
-          <div style={{ borderTop: "1px solid #f3f4f6", marginTop: 20, paddingTop: 20, textAlign: "center" }}>
+          <div style={{ borderTop: "1px solid rgba(229,231,235,0.6)", marginTop: 20, paddingTop: 20, textAlign: "center" }}>
             <p style={{ color: "#9ca3af", fontSize: 13, marginBottom: 8 }}>Нет аккаунта?</p>
             <button onClick={() => onNav("contacts")} style={{ color: "#0d2240", fontWeight: 600, fontSize: 13, background: "none", border: "none", cursor: "pointer" }}>
               Оставьте заявку — создадим доступ
@@ -162,7 +165,7 @@ export const SectionCabinet = ({ isLoggedIn, setIsLoggedIn, loginForm, setLoginF
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginBottom: 24 }}>
           {[["Package", "Всего заказов", "4"], ["Truck", "В пути", "1"], ["CheckCircle", "Доставлено", "3"]].map(([icon, label, val]) => (
-            <div key={label} style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 16, padding: 20, display: "flex", alignItems: "center", gap: 16 }}>
+            <div key={label} style={{ background: glass, border: "1px solid rgba(229,231,235,0.7)", borderRadius: 16, padding: 20, display: "flex", alignItems: "center", gap: 16, backdropFilter: blur }}>
               <div style={{ width: 48, height: 48, background: "#0d2240", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <Icon name={icon} size={20} className="text-[#e85d04]" />
               </div>
@@ -173,8 +176,8 @@ export const SectionCabinet = ({ isLoggedIn, setIsLoggedIn, loginForm, setLoginF
             </div>
           ))}
         </div>
-        <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 16, overflow: "hidden" }}>
-          <div style={{ display: "flex", borderBottom: "1px solid #e5e7eb" }}>
+        <div style={{ background: glass, border: "1px solid rgba(229,231,235,0.7)", borderRadius: 16, overflow: "hidden", backdropFilter: blur }}>
+          <div style={{ display: "flex", borderBottom: "1px solid rgba(229,231,235,0.6)" }}>
             {(["orders", "invoices"] as const).map((tab) => (
               <button key={tab} onClick={() => setCabinetTab(tab)}
                 style={{ flex: 1, padding: "16px", fontSize: 13, fontWeight: 600, cursor: "pointer", background: "none", border: "none", borderBottom: cabinetTab === tab ? "2px solid #e85d04" : "2px solid transparent", color: cabinetTab === tab ? "#e85d04" : "#9ca3af", transition: "all .2s" }}>
@@ -186,7 +189,7 @@ export const SectionCabinet = ({ isLoggedIn, setIsLoggedIn, loginForm, setLoginF
             {cabinetTab === "orders" && (
               <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
                 <thead>
-                  <tr style={{ background: "#f4f6f9" }}>
+                  <tr style={{ background: "rgba(244,246,249,0.7)" }}>
                     {["Номер заказа", "Откуда", "Куда", "Дата", "Вес", "Стоимость", "Статус"].map(h => (
                       <th key={h} style={{ textAlign: "left", padding: "12px 16px", color: "#9ca3af", fontWeight: 500, fontSize: 11 }}>{h}</th>
                     ))}
@@ -194,7 +197,7 @@ export const SectionCabinet = ({ isLoggedIn, setIsLoggedIn, loginForm, setLoginF
                 </thead>
                 <tbody>
                   {MOCK_ORDERS.map(o => (
-                    <tr key={o.id} style={{ borderTop: "1px solid #f3f4f6" }}>
+                    <tr key={o.id} style={{ borderTop: "1px solid rgba(243,244,246,0.8)" }}>
                       <td style={{ padding: "14px 16px", fontWeight: 600, color: "#0d2240" }}>{o.id}</td>
                       <td style={{ padding: "14px 16px", color: "#6b7280" }}>{o.from}</td>
                       <td style={{ padding: "14px 16px", color: "#6b7280" }}>{o.to}</td>
@@ -214,7 +217,7 @@ export const SectionCabinet = ({ isLoggedIn, setIsLoggedIn, loginForm, setLoginF
             {cabinetTab === "invoices" && (
               <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
                 <thead>
-                  <tr style={{ background: "#f4f6f9" }}>
+                  <tr style={{ background: "rgba(244,246,249,0.7)" }}>
                     {["Номер счёта", "Дата", "Сумма", "Статус", "Действия"].map(h => (
                       <th key={h} style={{ textAlign: "left", padding: "12px 16px", color: "#9ca3af", fontWeight: 500, fontSize: 11 }}>{h}</th>
                     ))}
@@ -222,7 +225,7 @@ export const SectionCabinet = ({ isLoggedIn, setIsLoggedIn, loginForm, setLoginF
                 </thead>
                 <tbody>
                   {MOCK_INVOICES.map(inv => (
-                    <tr key={inv.id} style={{ borderTop: "1px solid #f3f4f6" }}>
+                    <tr key={inv.id} style={{ borderTop: "1px solid rgba(243,244,246,0.8)" }}>
                       <td style={{ padding: "14px 16px", fontWeight: 600, color: "#0d2240" }}>{inv.id}</td>
                       <td style={{ padding: "14px 16px", color: "#9ca3af" }}>{inv.date}</td>
                       <td style={{ padding: "14px 16px", fontWeight: 600, color: "#0d2240" }}>{inv.amount}</td>
